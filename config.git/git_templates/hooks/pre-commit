@@ -1,0 +1,6 @@
+if [[ -x ./git/hooks/pre-commit  ]];
+then
+	./git/hooks/pre-commit
+	exit $?
+fi
+

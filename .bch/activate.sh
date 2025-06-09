@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 r=$(dirname $(dirname ${BASH_SOURCE[0]}))
-
+rm -f ~/.config/git
+ln -s ${r}/config.git ~/.config/git
 export BCH_CONFIG_GIT__root=${r}
 export BCH_CONFIG_GIT__init=${r}/.bch/activate.sh
 export BCH_CONFIG_GIT__lbin=${r}/.bch/lbin
