@@ -1,22 +1,18 @@
 #!/usr/bin/env bash
 
 r=$(dirname $(dirname ${BASH_SOURCE[0]}))
-rm -f ~/.config/git
-ln -s ${r}/config.git ~/.config/git
+
 export BCH_CONFIG_GIT__root=${r}
 export BCH_CONFIG_GIT__init=${r}/.bch/activate.sh
 export BCH_CONFIG_GIT__lbin=${r}/.bch/lbin
 export BCH_CONFIG_GIT__bin=${r}/.bch/bin
 export BCH_CONFIG_GIT__lib=${r}/.bch/lib
 
-for s in $(ls ${r}/.bch/lbin/bch*); do
-     d=${HOME}/.local/bin/$(basename $s)
-     [ ! -f ${d} ] && echo "[bch.config-git] linking ${s}"
-     [ ! -f ${d} ] && ln -s ${s} ${d}
-done
+rm -f ~/.config/git
+ln -s ${r}/config.git ~/.config/git
+
+bch:000:linkall ${r}/.bch/lbin
 
 source ${r}/.bch/init/init.sh
 
 unset r
-unset s
-unset d
