@@ -11,13 +11,9 @@ export BCH_CONFIG_GIT__lib=${r}/.bch/lib
 
 for s in $(ls ${r}/.bch/lbin/bch*); do
      d=${HOME}/.local/bin/$(basename $s)
-     [ ! -f ${d} ] && echo "[cookiecutter.dotted] linking ${s}"
+     [ ! -f ${d} ] && echo "[bch.config-git] linking ${s}"
      [ ! -f ${d} ] && ln -s ${s} ${d}
 done
-
-d=${r}/.bch/bin
-[[ ":$PATH:" == *":${d}:"* ]] || echo "[cookiecutter.dotted] appending ${d}"
-[[ ":$PATH:" == *":${d}:"* ]] || export PATH=${PATH}:${d}
 
 source ${r}/.bch/init/init.sh
 
